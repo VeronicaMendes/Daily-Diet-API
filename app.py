@@ -3,7 +3,7 @@ from database import db
 from flask_login import LoginManager
 from models.user import User
 from resources.user_resources import user_bp
-
+from resources.meal_resources import meal_bp
 
 app =  Flask(__name__)
 app.config['SECRET_KEY'] = "your-secret-key"
@@ -15,6 +15,7 @@ login_manager.init_app(app)
 login_manager.login_view = 'user_bp.login'
 
 app.register_blueprint(user_bp)
+app.register_blueprint(meal_bp)
 
 @login_manager.user_loader
 def load_user(user_id):
